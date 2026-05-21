@@ -117,6 +117,15 @@ function searchWiki() {
 
   list.style.display = found ? "block" : "none";
 }
+  document.getElementById("search").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    const firstVisible = document.querySelector('#list li[style*="block"] a');
+
+    if (firstVisible) {
+      window.location.href = firstVisible.href;
+    }
+  }
+});
 </script>
 </body>
 </html>
