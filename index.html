@@ -64,35 +64,49 @@
     <input type="text" id="search" placeholder="문서 검색..." onkeyup="searchWiki()">
 
     <p>왼쪽에서 문서를 선택하세요.</p>
-    <ul id="list">
-  <li>김동현</li>
-  <li>김소원</li>
-  <li>김원일</li>
-  <li>김예서</li>
-  <li>김현준</li>
-  <li>노동영</li>
-  <li>박도원</li>
-  <li>손채영</li>
-  <li>신지예</li>
-  <li>윤상훈</li>
-  <li>윤준식</li>
-  <li>이소현</li>
-  <li>임주은</li>
-  <li>장채범</li>
-  <li>장희찬</li>
+    border-radius:8px;
+  max-width:300px;
+  background:white;
+  display:none;
+">
+  <li><a href="kim1.html">김동현</a></li>
+  <li><a href="kim2.html">김소원</a></li>
+  <li><a href="kim3.html">김원일</a></li>
+  <li><a href="kim4.html">김예서</a></li>
+  <li><a href="kim5.html">김현준</a></li>
+  <li><a href="no1.html">노동영</a></li>
+  <li><a href="park1.html">박도원</a></li>
+  <li><a href="son1.html">손채영</a></li>
+  <li><a href="shin1.html">신지예</a></li>
+  <li><a href="yoon1.html">윤상훈</a></li>
+  <li><a href="yoon2.html">윤준식</a></li>
+  <li><a href="lee1.html">이소현</a></li>
+  <li><a href="lim1.html">임주은</a></li>
+  <li><a href="jang1.html">장채범</a></li>
+  <li><a href="jang2.html">장희찬</a></li>
 </ul>
   </div>
 <script>
 function searchWiki() {
   let input = document.getElementById("search").value.toLowerCase();
+  let list = document.getElementById("list");
   let items = document.querySelectorAll("#list li");
+
+  let hasResult = false;
 
   items.forEach(item => {
     let text = item.textContent.toLowerCase();
-    item.style.display = text.includes(input) ? "" : "none";
+
+    if (input && text.includes(input)) {
+      item.style.display = "";
+      hasResult = true;
+    } else {
+      item.style.display = "none";
+    }
   });
+
+  list.style.display = hasResult ? "block" : "none";
 }
 </script>
-
 </body>
 </html>
