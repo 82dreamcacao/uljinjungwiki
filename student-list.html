@@ -7,7 +7,7 @@
 <body style="font-family: Arial; max-width:800px; margin:auto; padding:20px;">
 
 <h1>👥 2학년 5반 학생 목록</h1>
-
+<input type="text" id="search">
 <ul id="list">
   <li><a href="kim1.html">김동현</a></li>
   <li><a href="kim2.html">김소원</a></li>
@@ -27,6 +27,25 @@
 </ul>
 
 <a href="index.html">← 메인으로</a>
+  <script>
+const search = document.getElementById("search");
+const list = document.getElementById("list");
+const items = list.getElementsByTagName("li");
+
+search.addEventListener("input", function () {
+  const value = this.value.toLowerCase();
+
+  for (let i = 0; i < items.length; i++) {
+    const name = items[i].innerText.toLowerCase();
+
+    if (name.includes(value)) {
+      items[i].style.display = "";
+    } else {
+      items[i].style.display = "none";
+    }
+  }
+});
+</script>
 
 </body>
 </html>
