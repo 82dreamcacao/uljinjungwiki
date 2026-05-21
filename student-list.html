@@ -27,25 +27,17 @@
 </ul>
 
 <a href="index.html">← 메인으로</a>
-  <script>
-const search = document.getElementById("search");
-const list = document.getElementById("list");
-const items = list.getElementsByTagName("li");
+<script>
+function searchWiki() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let items = document.querySelectorAll("#list li");
 
-search.addEventListener("input", function () {
-  const value = this.value.toLowerCase();
-
-  for (let i = 0; i < items.length; i++) {
-    const name = items[i].innerText.toLowerCase();
-
-    if (name.includes(value)) {
-      items[i].style.display = "";
-    } else {
-      items[i].style.display = "none";
-    }
-  }
-});
+  items.forEach(item => {
+    let text = item.textContent.toLowerCase();
+    item.style.display = text.includes(input) ? "" : "none";
+  });
+}
 </script>
-
+  
 </body>
 </html>
