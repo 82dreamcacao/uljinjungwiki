@@ -95,26 +95,27 @@
 function searchWiki() {
   const input = document.getElementById("search").value.toLowerCase();
   const list = document.getElementById("list");
-  const items = list.getElementsByTagName("li");
+  const items = document.querySelectorAll("#list li");
+
+  console.log("입력값:", input);
+  console.log("li 개수:", items.length);
 
   let found = false;
 
-  for (let i = 0; i < items.length; i++) {
-    const text = items[i].textContent.toLowerCase();
+  items.forEach(item => {
+    const text = item.textContent.toLowerCase();
+
+    console.log("비교중:", text);
 
     if (input !== "" && text.includes(input)) {
-      items[i].style.display = "block";
+      item.style.display = "block";
       found = true;
     } else {
-      items[i].style.display = "none";
+      item.style.display = "none";
     }
-  }
+  });
 
-  if (found) {
-    list.style.display = "block";
-  } else {
-    list.style.display = "none";
-  }
+  list.style.display = found ? "block" : "none";
 }
 </script>
 </body>
