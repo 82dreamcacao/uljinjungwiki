@@ -93,24 +93,28 @@
   </div>
 <script>
 function searchWiki() {
-  let input = document.getElementById("search").value.toLowerCase();
-  let list = document.getElementById("list");
-  let items = document.querySelectorAll("#list li");
+  const input = document.getElementById("search").value.toLowerCase();
+  const list = document.getElementById("list");
+  const items = list.getElementsByTagName("li");
 
-  let hasResult = false;
+  let found = false;
 
-  items.forEach(item => {
-    let text = item.textContent.toLowerCase();
+  for (let i = 0; i < items.length; i++) {
+    const text = items[i].textContent.toLowerCase();
 
-    if (input && text.includes(input)) {
-      item.style.display = "";
-      hasResult = true;
+    if (input !== "" && text.includes(input)) {
+      items[i].style.display = "block";
+      found = true;
     } else {
-      item.style.display = "none";
+      items[i].style.display = "none";
     }
-  });
+  }
 
-  list.style.display = hasResult ? "block" : "none";
+  if (found) {
+    list.style.display = "block";
+  } else {
+    list.style.display = "none";
+  }
 }
 </script>
 </body>
